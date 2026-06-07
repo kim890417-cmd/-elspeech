@@ -7,141 +7,198 @@
   <meta name="description" content="" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
+      --navy: #0f2742;
+      --navy-2: #16365c;
       --brand: #2563eb;
-      --brand-dark: #1e40af;
-      --ink: #1f2937;
-      --muted: #6b7280;
+      --brand-dark: #1d4ed8;
+      --gold: #c89b4a;
+      --ink: #1a2233;
+      --muted: #647088;
       --bg: #ffffff;
-      --bg-soft: #f8fafc;
-      --line: #e5e7eb;
-      --radius: 16px;
-      --max: 1120px;
+      --bg-soft: #f5f7fb;
+      --line: #e6eaf1;
+      --radius: 18px;
+      --max: 1140px;
+      --shadow: 0 18px 50px rgba(15,39,66,.10);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Noto Sans KR', system-ui, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.6;
+      color: var(--ink); background: var(--bg); line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 22px; }
+    .serif { font-family: 'Nanum Myeongjo', serif; }
+
     .btn {
-      display: inline-block; background: var(--brand); color: #fff;
-      padding: 14px 28px; border-radius: 999px; font-weight: 700;
-      transition: transform .15s ease, background .15s ease; cursor: pointer;
-      border: none; font-size: 1rem;
+      display: inline-flex; align-items: center; gap: 8px; background: var(--brand);
+      color: #fff; padding: 15px 30px; border-radius: 999px; font-weight: 700;
+      transition: transform .15s, box-shadow .15s, background .15s; cursor: pointer;
+      border: none; font-size: 1rem; box-shadow: 0 10px 24px rgba(37,99,235,.28);
     }
-    .btn:hover { background: var(--brand-dark); transform: translateY(-2px); }
-    .btn.ghost { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
-    .btn.ghost:hover { background: var(--brand); color: #fff; }
+    .btn:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(37,99,235,.36); }
+    .btn.ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.6); box-shadow: none; }
+    .btn.ghost:hover { background: rgba(255,255,255,.12); }
+    .btn.gold { background: var(--gold); box-shadow: 0 10px 24px rgba(200,155,74,.3); }
+    .btn.gold:hover { background: #b3863a; }
+
+    /* reveal animation */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
 
     /* Header */
     header {
-      position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.9);
-      backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+      position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--line);
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .logo { font-weight: 900; font-size: 1.25rem; color: var(--brand); }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a { color: var(--muted); font-weight: 500; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .logo { font-weight: 900; font-size: 1.3rem; color: var(--navy); letter-spacing: -.01em; }
+    .logo b { color: var(--brand); }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { color: var(--muted); font-weight: 500; font-size: .97rem; }
     .nav-links a:hover { color: var(--ink); }
-    .nav-cta { padding: 10px 20px; }
-    @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+    .nav-cta { padding: 10px 22px; font-size: .92rem; }
+    @media (max-width: 860px) { .nav-links a:not(.nav-cta) { display: none; } }
 
     /* Hero */
-    .hero {
-      position: relative; color: #fff; text-align: center;
-      padding: 110px 20px; overflow: hidden;
-      background: linear-gradient(135deg, #1e3a8a, #2563eb 60%, #3b82f6);
-    }
-    .hero .bg {
-      position: absolute; inset: 0; object-fit: cover; width: 100%; height: 100%;
-      opacity: .35; z-index: 0;
-    }
-    .hero .inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.25; margin-bottom: 18px; }
-    .hero p { font-size: clamp(1rem, 2.5vw, 1.25rem); opacity: .95; margin-bottom: 32px; }
-    .hero .btn { background: #fff; color: var(--brand); }
-    .hero .btn:hover { background: #f1f5f9; }
+    .hero { position: relative; color: #fff; overflow: hidden;
+      background: radial-gradient(120% 120% at 80% 0%, var(--navy-2), var(--navy) 60%); }
+    .hero .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .22; z-index: 0; }
+    .hero .wrap { position: relative; z-index: 1; padding: 110px 22px 120px; text-align: center; }
+    .hero .badge { display: inline-block; border: 1px solid rgba(255,255,255,.3); color: #cfe0ff;
+      padding: 7px 18px; border-radius: 999px; font-size: .85rem; font-weight: 500; margin-bottom: 26px; }
+    .hero h1 { font-size: clamp(2.1rem, 5.2vw, 3.6rem); font-weight: 800; line-height: 1.28; margin-bottom: 22px; letter-spacing: -.02em; }
+    .hero h1 .hl { color: #7eb0ff; }
+    .hero p { font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: #c4d2e8; max-width: 640px; margin: 0 auto 38px; }
+    .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-    /* Section */
-    section.block { padding: 84px 0; }
+    /* Stats */
+    .stats { background: var(--navy); color: #fff; }
+    .stats .wrap { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; padding: 0 22px;
+      transform: translateY(-40px); }
+    .stat { background: #16365c;
+      border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 28px 18px; text-align: center;
+      box-shadow: var(--shadow); }
+    .stat .num { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; color: #7eb0ff; }
+    .stat .lbl { color: #b9c6dc; font-size: .92rem; margin-top: 6px; }
+    @media (max-width: 760px){ .stats .wrap { grid-template-columns: repeat(2,1fr); } }
+
+    /* Section base */
+    section.block { padding: 92px 0; }
     section.soft { background: var(--bg-soft); }
-    .head { text-align: center; max-width: 640px; margin: 0 auto 52px; }
-    .head .eyebrow { color: var(--brand); font-weight: 700; letter-spacing: .05em; margin-bottom: 10px; }
-    .head h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-weight: 900; margin-bottom: 14px; }
-    .head p { color: var(--muted); }
+    section.navy { background: radial-gradient(120% 120% at 20% 0%, var(--navy-2), var(--navy)); color: #fff; }
+    .head { text-align: center; max-width: 680px; margin: 0 auto 56px; }
+    .eyebrow { color: var(--brand); font-weight: 800; letter-spacing: .14em; font-size: .8rem; margin-bottom: 14px; text-transform: uppercase; }
+    section.navy .eyebrow { color: var(--gold); }
+    .head h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -.02em; }
+    .head p { color: var(--muted); font-size: 1.05rem; }
+    section.navy .head p { color: #c4d2e8; }
 
-    /* Features */
-    .grid { display: grid; gap: 24px; }
-    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: 860px) { .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; } }
-    .card {
-      background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 32px; transition: box-shadow .2s ease, transform .2s ease;
-    }
-    .card:hover { box-shadow: 0 12px 30px rgba(0,0,0,.07); transform: translateY(-4px); }
-    .card .icon { font-size: 2.2rem; margin-bottom: 16px; }
-    .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
-    .card p { color: var(--muted); font-size: .97rem; }
+    /* Philosophy */
+    .philo { text-align: center; max-width: 820px; margin: 0 auto; }
+    .philo .quote { font-size: clamp(1.5rem, 3.6vw, 2.3rem); font-weight: 800; line-height: 1.5; letter-spacing: -.01em; }
+    .philo .quote .mark { color: var(--gold); }
+    .philo .body { color: #c4d2e8; font-size: 1.08rem; margin-top: 28px; }
+
+    /* Grids */
+    .grid { display: grid; gap: 26px; }
+    .cols-2 { grid-template-columns: repeat(2,1fr); }
+    .cols-3 { grid-template-columns: repeat(3,1fr); }
+    @media (max-width: 900px){ .cols-3 { grid-template-columns: 1fr; } .cols-2 { grid-template-columns: 1fr; } }
+
+    /* Instructors */
+    .teacher { background:#fff; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); }
+    .teacher .photo { aspect-ratio: 4/3; width:100%; object-fit: cover; background: linear-gradient(135deg,#dbe7fb,#c3d6f5); }
+    .teacher .photo.empty { display:flex; align-items:center; justify-content:center; color:#90a6c9; font-size:2.6rem; }
+    .teacher .body { padding: 28px; }
+    .teacher .name { font-size: 1.4rem; font-weight: 800; }
+    .teacher .role { color: var(--brand); font-weight: 700; margin: 4px 0 16px; font-size: .96rem; }
+    .teacher ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .teacher li { position: relative; padding-left: 22px; color: var(--muted); font-size: .96rem; }
+    .teacher li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 900; }
+
+    /* Feature cards */
+    .card { background:#fff; border:1px solid var(--line); border-radius: var(--radius); padding: 34px;
+      transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .card .icon { width: 58px; height: 58px; border-radius: 16px; display:flex; align-items:center; justify-content:center;
+      font-size: 1.7rem; background: linear-gradient(135deg,#e8f0ff,#d6e4ff); margin-bottom: 20px; }
+    .card h3 { font-size: 1.22rem; font-weight: 800; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: .98rem; }
 
     /* Programs */
-    .prog { display: flex; flex-direction: column; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background:#fff; }
-    .prog .thumb { aspect-ratio: 16/10; background: linear-gradient(135deg,#dbeafe,#bfdbfe); object-fit: cover; }
-    .prog .body { padding: 24px; }
-    .prog h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-    .prog p { color: var(--muted); font-size: .95rem; }
+    .prog { background:#fff; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden;
+      display:flex; flex-direction:column; transition: box-shadow .2s, transform .2s; }
+    .prog:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+    .prog .thumb { aspect-ratio: 16/10; object-fit: cover; background: linear-gradient(135deg,#dbe7fb,#c3d6f5); }
+    .prog .thumb.empty { display:flex; align-items:center; justify-content:center; color:#90a6c9; font-size:2.4rem; }
+    .prog .body { padding: 28px; display:flex; flex-direction:column; flex:1; }
+    .prog .tag { align-self:flex-start; background:#eef4ff; color:var(--brand); font-weight:700; font-size:.8rem;
+      padding:5px 12px; border-radius:999px; margin-bottom:14px; }
+    .prog h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; }
+    .prog > .body > p { color: var(--muted); font-size: .98rem; margin-bottom: 18px; }
+    .prog .items { list-style:none; margin-top:auto; display:flex; flex-wrap:wrap; gap:8px; }
+    .prog .items li { background: var(--bg-soft); border:1px solid var(--line); color: var(--ink);
+      font-size:.85rem; padding:6px 12px; border-radius:999px; }
 
-    /* Gallery */
-    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    @media (max-width: 760px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
-    .gallery figure { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; background: #e5e7eb; }
-    .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
-    .gallery figure:hover img { transform: scale(1.05); }
+    /* Facilities / gallery */
+    .gallery { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
+    @media (max-width:760px){ .gallery { grid-template-columns: repeat(2,1fr); } }
+    .gcell { position:relative; border-radius:14px; overflow:hidden; aspect-ratio: 4/3; background:#dbe3f0; }
+    .gcell img { width:100%; height:100%; object-fit:cover; transition: transform .4s; }
+    .gcell:hover img { transform: scale(1.06); }
+    .gcell figcaption { position:absolute; left:0; right:0; bottom:0; padding:14px 16px; color:#fff; font-weight:700;
+      background: linear-gradient(transparent, rgba(15,39,66,.78)); font-size:.95rem; }
+    .gcell.empty { display:flex; align-items:center; justify-content:center; color:#8aa0c2; font-weight:700; }
 
     /* Testimonials */
-    .quote { background:#fff; border:1px solid var(--line); border-radius: var(--radius); padding: 28px; }
-    .quote p { font-size: 1.02rem; margin-bottom: 16px; }
-    .quote .who { color: var(--muted); font-weight: 700; font-size: .92rem; }
+    .quote-card { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:30px; box-shadow: var(--shadow); }
+    .quote-card .stars { color: var(--gold); margin-bottom: 12px; letter-spacing: 2px; }
+    .quote-card p { font-size:1.05rem; margin-bottom:16px; }
+    .quote-card .who { color: var(--muted); font-weight:700; font-size:.92rem; }
 
-    /* Contact */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-    @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
-    .info-row { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-    .info-row .k { width: 84px; color: var(--muted); font-weight: 700; flex-shrink: 0; }
-    .info-row .v { font-weight: 500; }
-    .map { width: 100%; aspect-ratio: 4/3; border: 0; border-radius: var(--radius); background:#e5e7eb; }
+    /* Campuses */
+    .campus { background:#fff; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow: var(--shadow); }
+    .campus .map { width:100%; aspect-ratio: 16/9; border:0; background:#dbe3f0; }
+    .campus .map.empty { display:flex; align-items:center; justify-content:center; color:#8aa0c2; font-weight:700; }
+    .campus .body { padding: 28px; }
+    .campus h3 { font-size:1.35rem; font-weight:800; margin-bottom:16px; }
+    .campus .row { display:flex; gap:12px; padding:11px 0; border-bottom:1px dashed var(--line); font-size:.97rem; }
+    .campus .row:last-child { border-bottom:0; }
+    .campus .row .k { width:74px; color:var(--brand); font-weight:700; flex-shrink:0; }
+
+    /* CTA */
+    .cta-band { text-align:center; }
+    .cta-band h2 { font-size: clamp(1.8rem,4vw,2.6rem); font-weight:800; margin-bottom:16px; }
+    .cta-band p { color:#c4d2e8; font-size:1.1rem; margin-bottom:34px; }
+    .cta-band .cta-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
 
     /* Footer */
-    footer { background: #0f172a; color: #94a3b8; padding: 40px 0; text-align: center; font-size: .9rem; }
-    footer .fname { color: #fff; font-weight: 700; margin-bottom: 6px; }
+    footer { background:#0a1d33; color:#8597b3; padding:50px 0; text-align:center; font-size:.92rem; }
+    footer .fname { color:#fff; font-weight:800; font-size:1.15rem; margin-bottom:10px; }
+    footer .fcontact { margin: 8px 0 18px; color:#b9c6dc; }
 
-    /* Floating call button (mobile) */
-    .float-call {
-      position: fixed; right: 18px; bottom: 18px; z-index: 60;
-      background: var(--brand); color:#fff; border-radius: 999px; padding: 14px 22px;
-      font-weight: 700; box-shadow: 0 8px 24px rgba(37,99,235,.4);
-    }
+    .float-call { position:fixed; right:18px; bottom:18px; z-index:60; background:var(--brand); color:#fff;
+      border-radius:999px; padding:14px 22px; font-weight:800; box-shadow:0 10px 28px rgba(37,99,235,.45); }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap nav">
-      <a href="#" class="logo" data-bind="logo_text">학원</a>
+      <a href="#" class="logo" data-bind="logo_text">EL <b>SPEECH</b></a>
       <nav class="nav-links">
-        <a href="#features">학원특징</a>
-        <a href="#programs">수업과정</a>
-        <a href="#gallery">갤러리</a>
-        <a href="#contact">오시는길</a>
-        <a href="#contact" class="btn nav-cta" data-bind="hero.cta_text">상담문의</a>
+        <a href="#about">학원소개</a>
+        <a href="#teachers">강사진</a>
+        <a href="#programs">교육과정</a>
+        <a href="#facilities">시설</a>
+        <a href="#campus">찾아오시는길</a>
+        <a href="#campus" class="btn nav-cta">상담문의</a>
       </nav>
     </div>
   </header>
@@ -149,189 +206,247 @@
   <!-- HERO -->
   <section class="hero">
     <img class="bg" data-img="hero.background_image" alt="" onerror="this.style.display='none'" />
-    <div class="inner">
-      <h1 data-bind="hero.title">함께 성장하는 우리 학원</h1>
-      <p data-bind="hero.subtitle">학생 한 명 한 명에게 맞춤 교육을 제공합니다.</p>
-      <a href="#contact" class="btn" data-bind="hero.cta_text">상담 문의하기</a>
+    <div class="wrap">
+      <span class="badge" data-bind="hero.badge">청주 · 대전 스피치 전문 교육</span>
+      <h1 data-html="hero.title">말은 삶을 바꾸는 힘이 있습니다</h1>
+      <p data-bind="hero.subtitle">현직 아나운서 출신 전문 강사진과 함께하는 스피치·발표·면접 교육</p>
+      <div class="cta-row">
+        <a href="#campus" class="btn gold" data-bind="hero.cta_text">상담 문의하기</a>
+        <a href="#programs" class="btn ghost">교육과정 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrap" data-list="stats"></div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="block navy" id="about">
+    <div class="wrap philo reveal">
+      <div class="eyebrow" data-bind="philosophy.eyebrow">OUR PHILOSOPHY</div>
+      <div class="quote serif"><span class="mark">“</span><span data-bind="philosophy.title">확실한 변화, 체계적인 맞춤형 교육</span><span class="mark">”</span></div>
+      <p class="body" data-bind="philosophy.body">자신감과 설득력을 키워, 어디서든 당당하게 말하는 사람으로 성장시킵니다.</p>
+    </div>
+  </section>
+
+  <!-- TEACHERS -->
+  <section class="block" id="teachers">
+    <div class="wrap">
+      <div class="head reveal">
+        <div class="eyebrow" data-bind="instructors_section.eyebrow">INSTRUCTORS</div>
+        <h2 data-bind="instructors_section.title">현직 아나운서 출신 전문 강사진</h2>
+        <p data-bind="instructors_section.subtitle">방송과 국제행사 현장 경험을 갖춘 전문가가 직접 지도합니다.</p>
+      </div>
+      <div class="grid cols-2" data-list="instructors"></div>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section class="block" id="features">
+  <section class="block soft" id="features">
     <div class="wrap">
-      <div class="head">
-        <div class="eyebrow" data-bind="features_section.eyebrow">WHY US</div>
-        <h2 data-bind="features_section.title">우리 학원만의 강점</h2>
-        <p data-bind="features_section.subtitle">검증된 교육 방식으로 학생들의 성장을 돕습니다.</p>
+      <div class="head reveal">
+        <div class="eyebrow" data-bind="features_section.eyebrow">WHY EL SPEECH</div>
+        <h2 data-bind="features_section.title">이엘스피치만의 강점</h2>
+        <p data-bind="features_section.subtitle">검증된 교육 방식으로 학생의 성장을 책임집니다.</p>
       </div>
       <div class="grid cols-3" data-list="features"></div>
     </div>
   </section>
 
   <!-- PROGRAMS -->
-  <section class="block soft" id="programs">
+  <section class="block" id="programs">
     <div class="wrap">
-      <div class="head">
+      <div class="head reveal">
         <div class="eyebrow" data-bind="programs_section.eyebrow">PROGRAMS</div>
-        <h2 data-bind="programs_section.title">수업 과정 안내</h2>
-        <p data-bind="programs_section.subtitle">수준과 목표에 맞춰 체계적으로 구성된 커리큘럼입니다.</p>
+        <h2 data-bind="programs_section.title">교육 과정 안내</h2>
+        <p data-bind="programs_section.subtitle">키즈부터 성인, 면접 준비생까지 목표에 맞는 맞춤 커리큘럼.</p>
       </div>
       <div class="grid cols-3" data-list="programs"></div>
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section class="block" id="gallery">
+  <!-- FACILITIES -->
+  <section class="block soft" id="facilities">
     <div class="wrap">
-      <div class="head">
-        <div class="eyebrow" data-bind="gallery_section.eyebrow">GALLERY</div>
-        <h2 data-bind="gallery_section.title">학원 둘러보기</h2>
-        <p data-bind="gallery_section.subtitle">밝고 쾌적한 학습 환경을 사진으로 만나보세요.</p>
+      <div class="head reveal">
+        <div class="eyebrow" data-bind="facilities_section.eyebrow">FACILITIES</div>
+        <h2 data-bind="facilities_section.title">전문 교육 시설</h2>
+        <p data-bind="facilities_section.subtitle">발표무대·실습실·자세교정실 등 실전 환경을 갖췄습니다.</p>
       </div>
-      <div class="gallery" data-list="gallery"></div>
+      <div class="gallery" data-list="facilities"></div>
     </div>
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="block soft" id="reviews">
+  <section class="block" id="reviews">
     <div class="wrap">
-      <div class="head">
+      <div class="head reveal">
         <div class="eyebrow" data-bind="testimonials_section.eyebrow">REVIEWS</div>
         <h2 data-bind="testimonials_section.title">수강생 후기</h2>
       </div>
-      <div class="grid cols-2" data-list="testimonials"></div>
+      <div class="grid cols-3" data-list="testimonials"></div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="block" id="contact">
+  <!-- ACHIEVEMENTS -->
+  <section class="block soft" id="achievements">
     <div class="wrap">
-      <div class="head">
-        <div class="eyebrow">CONTACT</div>
-        <h2 data-bind="contact.title">오시는 길 · 상담 문의</h2>
+      <div class="head reveal">
+        <div class="eyebrow" data-bind="achievements_section.eyebrow">RESULTS</div>
+        <h2 data-bind="achievements_section.title">수상자 및 합격자</h2>
+        <p data-bind="achievements_section.subtitle">학생들의 값진 성과가 곧 이엘스피치의 자부심입니다.</p>
       </div>
-      <div class="contact-grid">
-        <div>
-          <div class="info-row"><div class="k">전화</div><div class="v"><a data-bind="contact.phone" data-href-tel="contact.phone">02-000-0000</a></div></div>
-          <div class="info-row"><div class="k">주소</div><div class="v" data-bind="contact.address">서울특별시 ○○구 ○○로 000</div></div>
-          <div class="info-row"><div class="k">운영시간</div><div class="v" data-bind="contact.hours">평일 14:00 ~ 22:00</div></div>
-          <div class="info-row"><div class="k">카카오</div><div class="v"><a data-bind="contact.kakao" data-href="contact.kakao_link" target="_blank">@우리학원</a></div></div>
-          <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
-            <a class="btn" data-href-tel="contact.phone">전화 상담하기</a>
-            <a class="btn ghost" data-href="contact.kakao_link" target="_blank">카카오 상담</a>
-          </div>
-        </div>
-        <iframe class="map" data-map="contact.map_embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="gallery" data-list="achievements"></div>
+    </div>
+  </section>
+
+  <!-- CAMPUSES -->
+  <section class="block" id="campus">
+    <div class="wrap">
+      <div class="head reveal">
+        <div class="eyebrow" data-bind="campuses_section.eyebrow">CONTACT</div>
+        <h2 data-bind="campuses_section.title">찾아오시는 길</h2>
+        <p data-bind="campuses_section.subtitle">방문 전 예약은 필수입니다. 편하게 상담 문의 주세요.</p>
+      </div>
+      <div class="grid cols-2" data-list="campuses"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="block navy">
+    <div class="wrap cta-band reveal">
+      <h2 data-bind="cta.title">지금, 당당하게 말하는 첫걸음을 시작하세요</h2>
+      <p data-bind="cta.subtitle">상담은 무료입니다. 편하게 문의 주세요.</p>
+      <div class="cta-row">
+        <a class="btn gold" data-href-tel="cta.phone">📞 <span data-bind="cta.phone">전화 상담</span></a>
+        <a class="btn ghost" data-href="cta.kakao_link" target="_blank">카카오톡 상담</a>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
-      <div class="fname" data-bind="academy_name">우리 학원</div>
-      <div data-bind="footer.text">© 우리 학원. All rights reserved.</div>
+      <div class="fname" data-bind="academy_name">이엘스피치학원</div>
+      <div class="fcontact" data-bind="footer.contact"></div>
+      <div data-bind="footer.text">© 이엘스피치학원. All rights reserved.</div>
     </div>
   </footer>
 
-  <a class="float-call" data-href-tel="contact.phone">📞 전화 상담</a>
+  <a class="float-call" data-href-tel="cta.phone">📞 상담</a>
 
   <script>
-    // content.json 의 내용을 페이지에 채워 넣는 스크립트입니다.
-    // 학원 운영자분은 이 파일을 건드릴 필요가 없습니다. (관리자 화면에서 내용만 수정하세요)
-    function getPath(obj, path) {
-      return path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
+    function getPath(o,p){ return p.split('.').reduce((a,k)=> (a==null?undefined:a[k]), o); }
+    function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+    function nl2br(s){ return esc(s).replace(/\n/g,'<br>'); }
+
+    function render(d){
+      if(d.academy_name) document.title = d.academy_name;
+      if(d.seo_description) document.querySelector('meta[name=description]').setAttribute('content', d.seo_description);
+
+      document.querySelectorAll('[data-bind]').forEach(el=>{
+        const v=getPath(d, el.getAttribute('data-bind'));
+        if(v!=null && v!=='') el.textContent=v;
+      });
+      document.querySelectorAll('[data-html]').forEach(el=>{
+        const v=getPath(d, el.getAttribute('data-html'));
+        if(v!=null && v!=='') el.innerHTML=nl2br(v);
+      });
+      document.querySelectorAll('[data-img]').forEach(el=>{
+        const v=getPath(d, el.getAttribute('data-img'));
+        if(v) el.src=v; else el.style.display='none';
+      });
+      document.querySelectorAll('[data-href]').forEach(el=>{
+        const v=getPath(d, el.getAttribute('data-href')); if(v) el.href=v;
+      });
+      document.querySelectorAll('[data-href-tel]').forEach(el=>{
+        const v=getPath(d, el.getAttribute('data-href-tel')); if(v) el.href='tel:'+String(v).replace(/[^0-9+]/g,'');
+      });
+
+      renderStats(d.stats);
+      renderInstructors(d.instructors);
+      renderFeatures(d.features);
+      renderPrograms(d.programs);
+      renderGallery('facilities', d.facilities);
+      renderTestimonials(d.testimonials);
+      renderGallery('achievements', d.achievements);
+      renderCampuses(d.campuses);
+
+      setupReveal();
     }
 
-    function render(data) {
-      // 문서 제목 / 메타
-      if (data.academy_name) document.title = data.academy_name;
-      if (data.seo_description) {
-        document.querySelector('meta[name=description]').setAttribute('content', data.seo_description);
-      }
-
-      // 단순 텍스트 바인딩
-      document.querySelectorAll('[data-bind]').forEach(el => {
-        const v = getPath(data, el.getAttribute('data-bind'));
-        if (v != null && v !== '') el.textContent = v;
-      });
-      // 배경 이미지
-      document.querySelectorAll('[data-img]').forEach(el => {
-        const v = getPath(data, el.getAttribute('data-img'));
-        if (v) el.src = v; else el.style.display = 'none';
-      });
-      // 링크 (URL)
-      document.querySelectorAll('[data-href]').forEach(el => {
-        const v = getPath(data, el.getAttribute('data-href'));
-        if (v) el.href = v;
-      });
-      // 전화 링크
-      document.querySelectorAll('[data-href-tel]').forEach(el => {
-        const v = getPath(data, el.getAttribute('data-href-tel'));
-        if (v) el.href = 'tel:' + v.replace(/[^0-9+]/g, '');
-      });
-      // 지도 임베드
-      document.querySelectorAll('[data-map]').forEach(el => {
-        const v = getPath(data, el.getAttribute('data-map'));
-        if (v) el.src = v; else el.parentElement.removeChild(el);
-      });
-
-      // 리스트(반복) 바인딩
-      renderFeatures(data.features);
-      renderPrograms(data.programs);
-      renderGallery(data.gallery);
-      renderTestimonials(data.testimonials);
+    function renderStats(items){
+      const box=document.querySelector('[data-list="stats"]'); if(!box||!items) return;
+      box.innerHTML=items.map(s=>`<div class="stat reveal"><div class="num">${esc(s.number)}</div><div class="lbl">${esc(s.label)}</div></div>`).join('');
     }
-
-    function renderFeatures(items) {
-      const box = document.querySelector('[data-list="features"]');
-      if (!box || !items) return;
-      box.innerHTML = items.map(f => `
-        <div class="card">
-          <div class="icon">${f.icon || '✨'}</div>
-          <h3>${esc(f.title)}</h3>
-          <p>${esc(f.description)}</p>
+    function renderInstructors(items){
+      const box=document.querySelector('[data-list="instructors"]'); if(!box||!items) return;
+      box.innerHTML=items.map(t=>`
+        <div class="teacher reveal">
+          ${t.photo?`<img class="photo" src="${t.photo}" alt="${esc(t.name)}" onerror="this.outerHTML='<div class=\\'photo empty\\'>🎙️</div>'">`:`<div class="photo empty">🎙️</div>`}
+          <div class="body">
+            <div class="name">${esc(t.name)}</div>
+            <div class="role">${esc(t.role)}</div>
+            <ul>${(t.credentials||[]).map(c=>`<li>${esc(c)}</li>`).join('')}</ul>
+          </div>
         </div>`).join('');
     }
-
-    function renderPrograms(items) {
-      const box = document.querySelector('[data-list="programs"]');
-      if (!box || !items) return;
-      box.innerHTML = items.map(p => `
-        <div class="prog">
-          ${p.image ? `<img class="thumb" src="${p.image}" alt="${esc(p.title)}" onerror="this.style.display='none'">` : `<div class="thumb"></div>`}
+    function renderFeatures(items){
+      const box=document.querySelector('[data-list="features"]'); if(!box||!items) return;
+      box.innerHTML=items.map(f=>`
+        <div class="card reveal"><div class="icon">${f.icon||'✨'}</div>
+        <h3>${esc(f.title)}</h3><p>${esc(f.description)}</p></div>`).join('');
+    }
+    function renderPrograms(items){
+      const box=document.querySelector('[data-list="programs"]'); if(!box||!items) return;
+      box.innerHTML=items.map(p=>`
+        <div class="prog reveal">
+          ${p.image?`<img class="thumb" src="${p.image}" alt="${esc(p.title)}" onerror="this.outerHTML='<div class=\\'thumb empty\\'>🎬</div>'">`:`<div class="thumb empty">🎬</div>`}
           <div class="body">
+            ${p.target?`<span class="tag">${esc(p.target)}</span>`:''}
             <h3>${esc(p.title)}</h3>
             <p>${esc(p.description)}</p>
+            <ul class="items">${(p.items||[]).map(i=>`<li>${esc(i)}</li>`).join('')}</ul>
+          </div>
+        </div>`).join('');
+    }
+    function renderGallery(key, items){
+      const box=document.querySelector(`[data-list="${key}"]`); if(!box) return;
+      if(!items||!items.length){ box.closest('section').style.display='none'; return; }
+      box.innerHTML=items.map(g=> g.image
+        ? `<figure class="gcell reveal"><img src="${g.image}" alt="${esc(g.caption||'')}" loading="lazy" onerror="this.parentElement.classList.add('empty');this.remove();this.parentElement.textContent='${esc(g.caption||'사진')}'">${g.caption?`<figcaption>${esc(g.caption)}</figcaption>`:''}</figure>`
+        : `<figure class="gcell empty reveal">${esc(g.caption||'사진 준비중')}</figure>`
+      ).join('');
+    }
+    function renderTestimonials(items){
+      const box=document.querySelector('[data-list="testimonials"]'); if(!box||!items) return;
+      box.innerHTML=items.map(t=>`
+        <div class="quote-card reveal"><div class="stars">★★★★★</div>
+        <p>“${esc(t.text)}”</p><div class="who">— ${esc(t.name)}</div></div>`).join('');
+    }
+    function renderCampuses(items){
+      const box=document.querySelector('[data-list="campuses"]'); if(!box||!items) return;
+      box.innerHTML=items.map(c=>`
+        <div class="campus reveal">
+          ${c.map_embed?`<iframe class="map" src="${c.map_embed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`:`<div class="map empty">지도 준비중</div>`}
+          <div class="body">
+            <h3>${esc(c.name)}</h3>
+            ${c.phone?`<div class="row"><div class="k">전화</div><div><a href="tel:${String(c.phone).replace(/[^0-9+]/g,'')}">${esc(c.phone)}</a></div></div>`:''}
+            ${c.address?`<div class="row"><div class="k">주소</div><div>${esc(c.address)}</div></div>`:''}
+            ${c.hours?`<div class="row"><div class="k">운영</div><div>${esc(c.hours)}</div></div>`:''}
+            ${c.parking?`<div class="row"><div class="k">주차</div><div>${esc(c.parking)}</div></div>`:''}
           </div>
         </div>`).join('');
     }
 
-    function renderGallery(items) {
-      const box = document.querySelector('[data-list="gallery"]');
-      if (!box || !items) return;
-      box.innerHTML = items.map(g => `
-        <figure><img src="${g.image}" alt="${esc(g.caption || '')}" loading="lazy" onerror="this.parentElement.style.display='none'"></figure>
-      `).join('');
+    function setupReveal(){
+      const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     }
 
-    function renderTestimonials(items) {
-      const box = document.querySelector('[data-list="testimonials"]');
-      if (!box || !items) return;
-      box.innerHTML = items.map(t => `
-        <div class="quote">
-          <p>“${esc(t.text)}”</p>
-          <div class="who">— ${esc(t.name)}</div>
-        </div>`).join('');
-    }
-
-    function esc(s) {
-      return (s == null ? '' : String(s)).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    }
-
-    fetch('content/content.json?v=' + Date.now())
-      .then(r => r.json())
-      .then(render)
-      .catch(err => console.error('content.json 을 불러오지 못했습니다:', err));
+    fetch('content/content.json?v='+Date.now()).then(r=>r.json()).then(render)
+      .catch(e=>console.error('content.json 로드 실패:', e));
   </script>
 </body>
 </html>
