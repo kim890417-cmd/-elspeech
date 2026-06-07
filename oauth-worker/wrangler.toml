@@ -1,0 +1,8 @@
+name = "academy-auth"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET 는 코드에 적지 말고
+# 아래 명령으로 따로 등록하세요 (보안):
+#   npx wrangler secret put GITHUB_CLIENT_ID
+#   npx wrangler secret put GITHUB_CLIENT_SECRET

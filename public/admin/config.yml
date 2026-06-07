@@ -1,0 +1,114 @@
+# ===================================================================
+#  관리자 화면 설정 파일
+#  배포 전에 아래 [여기수정] 표시된 2곳만 본인 정보로 바꾸면 됩니다.
+# ===================================================================
+
+backend:
+  name: github
+  repo: GITHUB_사용자명/저장소이름      # [여기수정] 예: hong-gildong/academy-site
+  branch: main
+  base_url: https://OAUTH_워커_주소      # [여기수정] 예: https://academy-auth.내계정.workers.dev
+
+# 업로드한 사진이 저장되는 위치 (수정 X)
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# 화면 언어
+locale: "ko"
+
+collections:
+  - name: "site"
+    label: "학원 페이지 내용"
+    files:
+      - name: "content"
+        label: "랜딩페이지 (전체 내용)"
+        file: "public/content/content.json"
+        description: "학원 이름, 소개글, 사진을 여기서 수정합니다."
+        fields:
+          - { label: "학원 이름", name: "academy_name", widget: "string" }
+          - { label: "로고에 표시될 이름", name: "logo_text", widget: "string" }
+          - { label: "검색 설명문구 (SEO)", name: "seo_description", widget: "text", required: false }
+
+          - label: "상단 대표 영역 (Hero)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "큰 제목", name: "title", widget: "string" }
+              - { label: "작은 설명", name: "subtitle", widget: "text" }
+              - { label: "버튼 문구", name: "cta_text", widget: "string" }
+              - { label: "배경 사진", name: "background_image", widget: "image", required: false }
+
+          - label: "강점 섹션 제목"
+            name: "features_section"
+            widget: "object"
+            fields:
+              - { label: "영문 머리말", name: "eyebrow", widget: "string", required: false }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "설명", name: "subtitle", widget: "text", required: false }
+          - label: "강점 목록"
+            name: "features"
+            widget: "list"
+            fields:
+              - { label: "아이콘 (이모지)", name: "icon", widget: "string", required: false, hint: "예: 👩‍🏫  📈  💬" }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "설명", name: "description", widget: "text" }
+
+          - label: "수업과정 섹션 제목"
+            name: "programs_section"
+            widget: "object"
+            fields:
+              - { label: "영문 머리말", name: "eyebrow", widget: "string", required: false }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "설명", name: "subtitle", widget: "text", required: false }
+          - label: "수업 과정 목록"
+            name: "programs"
+            widget: "list"
+            fields:
+              - { label: "과정 이름", name: "title", widget: "string" }
+              - { label: "설명", name: "description", widget: "text" }
+              - { label: "사진", name: "image", widget: "image", required: false }
+
+          - label: "갤러리 섹션 제목"
+            name: "gallery_section"
+            widget: "object"
+            fields:
+              - { label: "영문 머리말", name: "eyebrow", widget: "string", required: false }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "설명", name: "subtitle", widget: "text", required: false }
+          - label: "갤러리 사진 (자주 바꾸는 곳)"
+            name: "gallery"
+            widget: "list"
+            fields:
+              - { label: "사진", name: "image", widget: "image" }
+              - { label: "사진 설명", name: "caption", widget: "string", required: false }
+
+          - label: "후기 섹션 제목"
+            name: "testimonials_section"
+            widget: "object"
+            fields:
+              - { label: "영문 머리말", name: "eyebrow", widget: "string", required: false }
+              - { label: "제목", name: "title", widget: "string" }
+          - label: "수강생 후기 목록"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "후기 내용", name: "text", widget: "text" }
+              - { label: "작성자", name: "name", widget: "string" }
+
+          - label: "연락처 / 오시는 길"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "섹션 제목", name: "title", widget: "string" }
+              - { label: "전화번호", name: "phone", widget: "string" }
+              - { label: "주소", name: "address", widget: "string" }
+              - { label: "운영시간", name: "hours", widget: "string" }
+              - { label: "카카오 아이디", name: "kakao", widget: "string", required: false }
+              - { label: "카카오 채팅 링크", name: "kakao_link", widget: "string", required: false }
+              - { label: "지도 임베드 주소(src)", name: "map_embed", widget: "string", required: false, hint: "구글지도/네이버지도 '공유 > 퍼가기'의 iframe src 주소" }
+
+          - label: "맨 아래 문구"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "저작권 문구", name: "text", widget: "string" }

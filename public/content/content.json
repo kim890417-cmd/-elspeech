@@ -1,0 +1,61 @@
+{
+  "academy_name": "이엘스피치학원",
+  "logo_text": "EL SPEECH",
+  "seo_description": "이엘스피치학원 - 현직 아나운서 출신 전문 강사진의 체계적인 스피치·발표·면접 교육. 키즈부터 성인까지 맞춤 커리큘럼.",
+  "hero": {
+    "title": "말은 삶을 바꾸는 힘이 있습니다",
+    "subtitle": "현직 아나운서 출신 전문 강사진과 함께하는 스피치·발표·면접 교육",
+    "cta_text": "상담 문의하기",
+    "background_image": ""
+  },
+  "features_section": {
+    "eyebrow": "WHY EL SPEECH",
+    "title": "이엘스피치만의 강점",
+    "subtitle": "확실한 변화, 체계적인 맞춤형 교육으로 자신감과 설득력을 키웁니다."
+  },
+  "features": [
+    { "icon": "🎙️", "title": "현직 아나운서 강사진", "description": "방송·국제행사 현장 경험을 갖춘 전문 강사가 직접 지도합니다." },
+    { "icon": "📊", "title": "단계별 맞춤 커리큘럼", "description": "수준과 목표에 맞춰 기초부터 리더십 스피치까지 체계적으로 구성됩니다." },
+    { "icon": "🎬", "title": "실습 중심 전문 시설", "description": "발표무대, 스튜디오 실습실, 자세교정실에서 실전처럼 훈련합니다." }
+  ],
+  "programs_section": {
+    "eyebrow": "PROGRAMS",
+    "title": "교육 과정 안내",
+    "subtitle": "키즈부터 성인, 면접 준비생까지 목표에 맞는 과정을 제공합니다."
+  },
+  "programs": [
+    { "title": "키즈 스피치", "description": "발음교정, 논리적 말하기, 발표자세, 토론실습으로 자신감을 키웁니다.", "image": "" },
+    { "title": "성인 스피치", "description": "보이스트레이닝, 발표코칭, 공감대화법, 영어PT, IR피칭까지.", "image": "" },
+    { "title": "면접 멘토링", "description": "답변정리, 자세교정, 화법코칭, 모의면접으로 합격을 준비합니다.", "image": "" }
+  ],
+  "gallery_section": {
+    "eyebrow": "GALLERY",
+    "title": "학원 둘러보기",
+    "subtitle": "발표무대와 실습실 등 전문 교육 환경을 만나보세요."
+  },
+  "gallery": [
+    { "image": "", "caption": "발표무대" },
+    { "image": "", "caption": "스튜디오 실습실" },
+    { "image": "", "caption": "자세교정실" }
+  ],
+  "testimonials_section": {
+    "eyebrow": "REVIEWS",
+    "title": "수강생 후기"
+  },
+  "testimonials": [
+    { "text": "발표 울렁증이 심했는데 무대에서 자신감 있게 말할 수 있게 됐어요.", "name": "성인 수강생" },
+    { "text": "아이가 또박또박 발표하는 모습에 깜짝 놀랐습니다.", "name": "키즈 학부모님" }
+  ],
+  "contact": {
+    "title": "찾아오시는 길 · 상담 문의",
+    "phone": "043-716-2526",
+    "address": "청주점: 청주시 서현로60 메리맘스 301호  |  대전점: 대전시 은구비로42 영도빌딩 402호",
+    "hours": "평일 13:00~23:00 / 토 09:00~21:00 / 일·공휴일 휴무 (방문 전 예약 필수)",
+    "kakao": "카카오톡 문의",
+    "kakao_link": "",
+    "map_embed": ""
+  },
+  "footer": {
+    "text": "© 이엘스피치학원 (Expert Level Speech). All rights reserved."
+  }
+}
