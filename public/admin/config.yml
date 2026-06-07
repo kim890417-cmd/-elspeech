@@ -5,9 +5,9 @@
 
 backend:
   name: github
-  repo: GITHUB_사용자명/저장소이름      # [여기수정] 예: hong-gildong/academy-site
+  repo: kim890417-cmd/-elspeech         # 이엘스피치 저장소
   branch: main
-  base_url: https://OAUTH_워커_주소      # [여기수정] 예: https://academy-auth.내계정.workers.dev
+  base_url: https://academy-auth.kim890417.workers.dev   # 인증 워커
 
 # 업로드한 사진이 저장되는 위치 (수정 X)
 media_folder: "public/images/uploads"
